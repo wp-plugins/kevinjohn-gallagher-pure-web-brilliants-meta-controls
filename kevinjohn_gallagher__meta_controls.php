@@ -2,7 +2,7 @@
 /*
 	Plugin Name: 			Kevinjohn Gallagher: Pure Web Brilliant's Meta Controls
 	Description: 			Removes the need for meta tags to be hardcoded into themes. 
-	Version: 				2.0
+	Version: 				2.1
 	Author: 				Kevinjohn Gallagher
 	Author URI: 			http://kevinjohngallagher.com/
 	
@@ -11,7 +11,7 @@
 	Tags: 					kevinjohn gallagher, pure web brilliant, framework, cms, simple, multisite, 
 	Requires at least:		3.0
 	Tested up to: 			3.4
-	Stable tag: 			2.0
+	Stable tag: 			2.1
 */
 /**
  *
@@ -38,7 +38,7 @@
  *
  *
  *	@package				Pure Web Brilliant
- *	@version 				2.0.1
+ *	@version 				2.1
  *	@author 				Kevinjohn Gallagher <wordpress@kevinjohngallagher.com>
  *	@copyright 				Copyright (c) 2012, Kevinjohn Gallagher
  *	@link 					http://kevinjohngallagher.com
@@ -49,7 +49,7 @@
 
 
 
-	define( '_KEVINJOHN_GALLAGHER___meta_controls', '2.0' );
+	define( '_KEVINJOHN_GALLAGHER___meta_controls', '2.1' );
 
 
 
@@ -189,7 +189,8 @@
 
 
 //Mobile
-
+						/*
+						
 						$this->child_settings_array['mobile_debug'] = array(
 																				'id'      		=> 'mobile_debug',
 																				'title'   		=> 'Debug',
@@ -201,7 +202,8 @@
 																											'0'	=>	'Off'
 																									),
 																				'class'   		=> ''
-																			);					
+																			);
+						*/					
 
 
 						$this->child_settings_array['mobile_optomized'] = array(
@@ -470,6 +472,7 @@
 
 
 //Robot Settings
+						/*
 
 						if(class_exists('WPSEO_Frontend'))
 						{							 
@@ -526,6 +529,7 @@
 
 								 
 						}
+						*/
 
 
 						
@@ -568,15 +572,14 @@
 						$this->chrome_frame();
 						
 						
-						if( class_exists('kevinjohn_gallagher___mobile_control') )
-						{
-							
-								if( $this->plugin_options['mobile_debug'] )
-								{
+					//	if( class_exists('kevinjohn_gallagher___mobile_control') )
+					//	{		
+					//			if( $this->plugin_options['mobile_debug'] )
+					//			{
 
 										$this->mobile_headers();
-								}
-						}
+					//			}
+					//	}
 						
 						
 						$this->microsoft_tags();

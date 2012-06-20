@@ -1,10 +1,10 @@
-=== Kevinjohn Gallagher: Pure Web Brilliant's Meta Controls ===
+=== Pure Web Brilliant's Meta Controls ===
 	Contributors:			kevinjohngallagher, purewebbrilliant 
 	Donate link:			http://kevinjohngallagher.com/
 	Tags: 					kevinjohn gallagher, pure web brilliant, framework, cms, simple, header, meta, tags, seo, mobile
 	Requires at least:		3.0
 	Tested up to: 			3.4
-	Stable tag: 			2.0
+	Stable tag: 			2.1
 
 
 
@@ -29,6 +29,9 @@ You can find that at: http://wordpress.org/extend/plugins/kevinjohn-gallagher-pu
 
 
 == Changelog ==
+
+= 2.1 =
+* Removed check for mobile and debugging, as that plugin is not yet in the repository.
 
 = 2.0 =
 * Removal of non-GPLv3 compatible functions.
