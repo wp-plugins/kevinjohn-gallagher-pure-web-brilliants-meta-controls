@@ -2,7 +2,7 @@
 /*
 	Plugin Name: 			Kevinjohn Gallagher: Pure Web Brilliant's Meta Controls
 	Description: 			Removes the need for meta tags to be hardcoded into themes. 
-	Version: 				2.1
+	Version: 				2.2
 	Author: 				Kevinjohn Gallagher
 	Author URI: 			http://kevinjohngallagher.com/
 	
@@ -11,7 +11,7 @@
 	Tags: 					kevinjohn gallagher, pure web brilliant, framework, cms, simple, multisite, 
 	Requires at least:		3.0
 	Tested up to: 			3.4
-	Stable tag: 			2.1
+	Stable tag: 			2.2
 */
 /**
  *
@@ -38,7 +38,7 @@
  *
  *
  *	@package				Pure Web Brilliant
- *	@version 				2.1
+ *	@version 				2.2
  *	@author 				Kevinjohn Gallagher <wordpress@kevinjohngallagher.com>
  *	@copyright 				Copyright (c) 2012, Kevinjohn Gallagher
  *	@link 					http://kevinjohngallagher.com
@@ -49,7 +49,7 @@
 
 
 
-	define( '_KEVINJOHN_GALLAGHER___meta_controls', '2.1' );
+	define( '_KEVINJOHN_GALLAGHER___meta_controls', '2.2' );
 
 
 
@@ -92,18 +92,20 @@
 				*/
 				public	function	__construct() 
 				{
-						$this->instance					=	&$this;
-						$this->uniqueID 				=	self::PM;
-						$this->plugin_name				=	"Kevinjohn Gallagher: Pure Web Brilliant's meta controls";
-						$this->plugin_page_title		=	"meta control"; 
-						$this->plugin_menu_title		=	"meta control"; 					
-						$this->plugin_slug				=	"meta-control";
+						$this->instance											=	&$this;
+						$this->uniqueID 										=	self::PM;
+						$this->plugin_dir										=	plugin_dir_path(__FILE__);	
+						$this->plugin_url										=	plugin_dir_url(__FILE__);							
+						$this->plugin_name										=	"Kevinjohn Gallagher: Pure Web Brilliant's meta controls";
+						$this->plugin_page_title								=	"meta control"; 
+						$this->plugin_menu_title								=	"meta control"; 					
+						$this->plugin_slug										=	"meta-control";
 						
 						
 						add_action( 'init',				array( $this, 'init' ) );
 						add_action( 'init',				array( $this, 'init_child' ) );
 						add_action(	'admin_init',		array( $this, 'admin_init_register_settings'), 100);
-						add_action( 'admin_menu',		array( $this, 'add_plugin_to_menu'));
+					//	add_action( 'admin_menu',		array( $this, 'add_plugin_to_menu'));
 												
 				}
 				
@@ -118,23 +120,16 @@
 			
 				public function init_child() 
 				{
-						$this->plugin_dir										=	plugin_dir_path(__FILE__);	
-						$this->plugin_url										=	plugin_dir_url(__FILE__);				
+			
 				
-						$this->child_settings_sections 							=	array();
-						$this->child_settings_array 							=	array();
-						
-						$this->define_child_settings();
-						
 						add_action(	'wp_head',									array( $this,	'wp_head_meta_controls'), 100);
 
 				}
 				
- 				
-				public 	function 	define_child_settings()
+
+
+				public 	function 	define_child_settings_sections()
 				{
-				
-						$this->child_settings_sections 									=	array();
 					//	$this->child_settings_sections['section_web']					= ' Web: ';
 						$this->child_settings_sections['section_mobile'] 				= ' Mobile:';
 					//	$this->child_settings_sections['section_windows'] 				= ' Windows:';
@@ -142,39 +137,11 @@
 					//	$this->child_settings_sections['section_seo'] 					= ' Search Engines:';						
 					//	$this->child_settings_sections['section_robots'] 				= ' Robots:';
 						$this->child_settings_sections['section_extras'] 				= ' Extras:';
-
-						$this->child_settings_array = array();
-						
-/*
-						$this->child_settings_array['open_graph_default'] = array(
-																				'id'      		=> 	'open_graph_default',
-																				'title'   		=> 	'Open Graph image',
-																				'description'	=>	'<br />This is "a fall back" image that will be shown if/when no other image is availbile. It is a good idea to make this your logo !',
-																				'type'    		=>	'wp_image_upload',
-																				'section' 		=>	'section_web',
-																				'choices' 		=> 	array(
-																										'image-id'		=>	'',
-																										'cpt'			=>	'',
-																										'post-name'		=>	'',
-																										'size'			=>	''
-																									),
-																				'class'   		=> 	''
-																			);					
+				}
 
 
-
-						$this->child_settings_array['data_copyright'] = array(
-																				'id'      		=> 'data_copyright',
-																				'title'   		=> 'Copyright',
-																				'description'	=> ' year, then name: &nbsp; e.g. "2009 Kevinjohn Gallagher" ',
-																				'type'    		=> 'text',
-																				'section' 		=> 'section_web',
-																				'choices' 		=> array(
-																									),
-																				'class'   		=> ''
-																			);					
-*/
-						
+				public 	function 	define_child_settings_array()
+				{		
 						
 						$this->child_settings_array['chrome_frame'] = array(
 																				'id'      		=> 'chrome_frame',
@@ -434,11 +401,6 @@
 
 
 
-
-
-//	<meta http-equiv="ImageToolbar" content="false">
-//	<meta name="MSSmartTagsPreventParsing" content="true">
-
 						$this->child_settings_array['image_toolbar'] = array(
 																				'id'      		=> 'image_toolbar',
 																				'title'   		=> 'Image Toolbar',
@@ -531,10 +493,10 @@
 						}
 						*/
 
-
-						
+				
+				
+				
 				}
-
 
 				/*
 				**
@@ -543,12 +505,12 @@
 				*/				
 				public 	function 	add_plugin_to_menu()
 				{
-						$this->framework_admin_menu_child(	'meta control', 
-															'meta control', 
-															$this->plugin_slug,					//'meta-control', 
-															array($this, 'child_admin_page')
-														);
-				
+
+						$this->framework_admin_menu_child(	$this->plugin_page_title, 
+															$this->plugin_menu_title, 
+															$this->plugin_slug, 
+															array($this, 	'child_admin_page')
+														);				
 				}
 				
 
