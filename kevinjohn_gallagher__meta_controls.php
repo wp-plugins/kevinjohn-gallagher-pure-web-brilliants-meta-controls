@@ -2,7 +2,7 @@
 /*
 	Plugin Name: 			Kevinjohn Gallagher: Pure Web Brilliant's Meta Controls
 	Description: 			Removes the need for meta tags to be hardcoded into themes. 
-	Version: 				2.2
+	Version: 				2.3
 	Author: 				Kevinjohn Gallagher
 	Author URI: 			http://kevinjohngallagher.com/
 	
@@ -11,7 +11,7 @@
 	Tags: 					kevinjohn gallagher, pure web brilliant, framework, cms, simple, multisite, 
 	Requires at least:		3.0
 	Tested up to: 			3.4
-	Stable tag: 			2.2
+	Stable tag: 			2.3
 */
 /**
  *
@@ -38,7 +38,7 @@
  *
  *
  *	@package				Pure Web Brilliant
- *	@version 				2.2
+ *	@version 				2.3
  *	@author 				Kevinjohn Gallagher <wordpress@kevinjohngallagher.com>
  *	@copyright 				Copyright (c) 2012, Kevinjohn Gallagher
  *	@link 					http://kevinjohngallagher.com
@@ -46,10 +46,20 @@
  *
  *
  */
+ 
+
+ 	if ( ! defined( 'ABSPATH' ) )
+ 	{ 
+ 			die( 'Direct access not permitted.' ); 
+ 	}
+ 	
+ 	
+ 	
 
 
 
-	define( '_KEVINJOHN_GALLAGHER___meta_controls', '2.2' );
+
+	define( '_KEVINJOHN_GALLAGHER___meta_controls', '2.3' );
 
 
 
